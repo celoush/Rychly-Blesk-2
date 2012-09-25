@@ -1,0 +1,17 @@
+;Script created by Flashpoint Equipment Editor by the Austrian Scripting Front, aka David Berka (David.Berka@nmi.at)
+_man = _this
+RemoveAllWeapons _man
+_man addMagazine  "M4"
+_man addWeapon  "M4"
+_man addMagazine  "M4"
+_man addMagazine  "M4"
+_man addMagazine  "M4"
+_man addMagazine  "M4"
+_man addMagazine  "HandGrenade"
+_man addMagazine  "HandGrenade"
+_man addMagazine  "HandGrenade"
+_man addMagazine  "HandGrenade"
+_man addMagazine  "HandGrenade"
+_man addWeapon  "Binocular"
+_man addWeapon  "NVGoggles"
+exit

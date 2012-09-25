@@ -1,0 +1,212 @@
+onLoadMission="Operace zaèíná"
+OnLoadIntro="Operace Rychlý blesk II"
+onLoadMissionTime = false
+onLoadIntroTime = false
+MinScore = 5000
+AvgScore = 9000
+MaxScore = 20000
+class CfgIdentities
+{
+	class zenista
+	{
+		name = "Des. Jack Brown";
+		face = "Face24";
+		glasses="None";
+		speaker = "Peter";
+		pitch = 1.10;
+	};
+	class velitel1
+	{
+		name = "Plk. Jim Morrison";
+		face = "Face12";
+		glasses="None";
+		speaker = "Peter";
+		pitch = 1.10;
+	};
+	class velitel2
+	{
+		name = "Mjr. Lewis Peterson";
+		face = "Face11";
+		glasses="None";
+		speaker = "Peter";
+		pitch = 1.10;
+	};
+	class tankista
+	{
+		name = "Major Bill Gaudner";
+		face = "Face24";
+		glasses="None";
+		speaker = "Adam";
+		pitch = 1.10;
+	};
+	class pilot
+	{
+		name = "Mjr. Jack T. Robinson";
+		face = "Face10";
+		glasses="None";
+		speaker = "Marc";
+		pitch = 1.05;
+	};
+	class pesak
+	{
+		name = "Des. Brat Hudson";
+		face = "Face10";
+		glasses="spectacles";
+		speaker = "Marc";
+		pitch = 0.85;
+	};
+	class jeeper
+	{
+		name = "Des. Tim Robinson";
+		face = "Face07";
+		glasses="None";
+		speaker = "Marc";
+		pitch = 0.9;
+	};
+	
+};
+
+
+// ---------------- Definice písma -----------------
+// --- Není nutné - Lze použít pøímo názvù písem ---
+#define FontS "tahomaB24"
+#define FontM "tahomaB36"
+#define FontHTML "courierNewB64"
+#define FontHTMLBold "courierNewB64"
+#define FontMAP "courierNewB64"
+#define FontMAIN "SteelfishB64"
+#define FontMAINCZ "SteelfishB64CE"
+#define FontTITLE "SteelfishB128"
+#define FontTITLEHalf "SteelfishB64"
+#define FontBOOK "garamond64"
+#define FontNOTES "AudreysHandI48"
+
+// ---------------- Definice typù objektù ----------
+// --- Není nutné - Lze použít pøímo èísla typu  ---
+#define CT_STATIC		0
+
+#define ST_CENTER		2
+#define ST_MULTI		16
+#define ST_SHADOW		256
+#define ST_NO_RECT		512
+
+// ------------ Základní tøídy ----------------
+class RscPicture 
+{ 
+	type=0; 
+	idc=-1; 
+	style=48; 
+	colorBackground[]={0,0,0,1}; 
+	colorText[]={1,1,1,1}; 
+	font="tahomaB24"; 
+	size=0; 
+}; 
+
+class RscText
+{
+	type=0
+	idc=4294967295
+	style=0
+	h=0.040000;
+	colorBackground[]={0,0,0,0};
+	colorText[]={0.780000,0.080000,0.520000,0.750000};
+	font="tahomaB24";
+	sizeEx=0.020000;
+};
+
+class RscBackground
+{
+	type=CT_STATIC
+	idc=-1
+	style=ST_3D_BORDER
+	x=0.150000;
+	y=0.150000;
+	w=0.700000;
+	h=0.700000;
+	text="";
+	colorBackground[]={1,1,1,1};
+	colorText[]={1,0,1,0};
+	font="tahomaB24";
+	sizeEx=0
+};
+
+// ----------------- Tøídy titulkù -------------------
+class RscTitles 
+{ 
+	titles[] = 
+	{
+
+		titlesorb,
+		titlesceloush,
+		titlesuvadi
+	};
+
+	class titlesorb
+	{
+		name = "";
+		duration = 6;
+		idd = -1;
+		movingEnable = false;
+		
+		controls[]= {text};
+
+		class text: RscText
+		{
+			style = ST_MULTI + ST_CENTER + ST_NO_RECT;
+			lineSpacing = 1.0;
+			text = $STR_title3;
+			x = 0.17; y = 0.4; w = 0.66; h = 0.1;
+			colorText[] = {0, 0.5, 0, 1};
+			font = SteelfishB128;
+			sizeEx = 0.25;
+			size = 1.1;
+		};
+
+	};
+
+	class titlesceloush
+	{
+		name = "";
+		duration = 6;
+		idd = -1;
+		movingEnable = false;
+		
+		controls[]= {text};
+
+		class text: RscText
+		{
+			style = ST_MULTI + ST_CENTER + ST_NO_RECT;
+			lineSpacing = 1.0;
+			text = $STR_title1;
+			x = 0.17; y = 0.4; w = 0.66; h = 0.1;
+			colorText[] = {0, 0.5, 0, 1};
+			font = SteelfishB128;
+			sizeEx = 0.25;
+			size = 0.7;
+		};
+
+	};
+
+	class titlesuvadi
+	{
+		name = "";
+		duration = 6;
+		idd = -1;
+		movingEnable = false;
+		
+		controls[]= {text};
+
+		class text: RscText
+		{
+			style = ST_MULTI + ST_CENTER + ST_NO_RECT;
+			lineSpacing = 1.0;
+			text = $STR_title2;
+			x = 0.17; y = 0.4; w = 0.66; h = 0.1;
+			colorText[] = {0, 0.5, 0, 1};
+			font = SteelfishB128;
+			sizeEx = 0.25;
+			size = 0.7;
+		};
+
+	};
+};

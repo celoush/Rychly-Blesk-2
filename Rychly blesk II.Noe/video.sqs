@@ -1,0 +1,271 @@
+jetua10=false
+enableradio false
+setviewdistance 1400
+0 setfog 0
+zenista stop true
+playmusic ["Track4",0]
+cis1 setfuel 1
+cis2 setfuel 1
+uaz setfuel 1
+dust stop false
+dust1=true
+kolo stop true
+
+; pohled na most pres krovi
+_cam camSetFov 0.4
+_cam = "camera" CamCreate [7397.62,4752.13,2.00204468]
+_cam CamSetTarget [7695.93,4480.41,2.00111961]
+_cam CameraEffect ["Internal","Back"]
+_cam CamCommit 0
+titleCut ["","BLACK IN",3]
+~3
+
+titletext["","PLAIN DOWN",0]
+
+; pohled na most ze zabradli
+_cam camSetFov 0.7
+_cam CamSetPos [7398.45,4754.88,1.4016098]
+_cam CamSetTarget [7931.54,4392.68,2.00125885]
+_cam CamCommit 5
+@CamCommitted _cam
+~1
+titleCut ["","BLACK OUT",1]
+~1
+
+setviewdistance 1115
+
+; kamera na kolo a10
+_cam camSetFov 0.4
+_cam CamSetPos [1529.08,4832.54,-0.00137329]
+_cam CamSetTarget [1523.72,4832.77,-0.00137329]
+_cam CamCommit 0
+titleCut ["","BLACK IN",1]
+~1
+a101 setfuel 1
+a102 setfuel 1
+a103 setfuel 1
+~3.5
+titleCut ["","BLACK OUT",1]
+~1
+
+;pohled od zabradli na kostel
+_cam camSetFov 0.8
+_cam CamSetPos [7398.45,4754.88,1.4016098]
+_cam CamSetTarget [7371.11,4766.22,20.00209808]
+_cam CamCommit 0
+@CamCommitted _cam
+titleCut ["","BLACK IN",1]
+
+; pohled na tanky
+_cam camSetFov 0.7
+_cam CamSetTarget [7361.11,4766.22,10.00209808]
+_cam CamCommit 5
+@CamCommitted _cam
+
+~1
+titleCut ["","BLACK OUT",1]
+~1
+
+; pohled na a10 - 4 zezadu
+_cam CamSetPos [1524.44,4621.93,-0.00137329]
+_cam CamSetTarget a104
+_cam CamCommit 0
+titleCut ["","BLACK IN",1]
+a104 setfuel 1
+
+~3
+
+titleCut ["","BLACK OUT",1]
+~1
+; pohled z mostu na tanky
+_cam CamSetPos [7908.92,4391.58,18.50115585]
+_cam CamCommit 0
+@CamCommitted _cam
+titleCut ["","BLACK IN",1]
+~2
+
+; pohled z mostu na kolo
+_cam CamSetTarget [8106.46,4391.56,18.000379562]
+_cam camSetFov 0.4
+_cam CamCommit 3
+@CamCommitted _cam
+
+most setpos [7908.92,4391.58,18.50115585]
+@jetua10
+;zatmivacka
+titleCut ["","BLACK OUT",2]
+~2
+
+titleCut ["","WHITE IN",0.3]
+playmusic["RTrack2",0]
+
+; pohled na prvni letadlo
+_cam CamSetPos [1527.1,5281.88,0.00137329]
+_cam CamSetTarget [1526.63,5167.95,0.00137329]
+_cam camSetFov 0.7
+_cam CamCommit 0
+~7
+v1 setfuel 1
+
+; pohled na most
+_cam CamSetPos [7398.45,4754.88,1.4016098]
+_cam CamSetTarget [7931.54,4392.68,2.00125885]
+_cam CamCommit 0
+~3
+; pohled na druhe letadlo
+_cam CamSetPos [1527.1,5281.88,0.00137329]
+_cam CamSetTarget [1526.63,5167.95,0.00137329]
+_cam CamCommit 0
+~3.5
+; pohled z mostu
+_cam CamSetPos [7708.92,4491.58,18.150115585]
+_cam CamSetTarget [7931.54,4392.68,2.00125885]
+_cam CamCommit 0
+
+vojcl setpos [1524.38,5658.96,0.20137901]
+vojcl setbehaviour "SAFE"
+vojcl setdir 179.822
+vojcl stop true
+vojcl switchmove "FXToHand"
+
+~3.5
+
+; pohled na treti letadlo (vzletajici)
+_cam CamSetPos [1523.95,5672.32,0.10138855]
+_cam CamSetTarget [1526.63,5167.95,0.20137329]
+_cam CamSetFov 0.4
+_cam CamCommit 0
+~13
+
+_i = 0
+titletext ["Káòata opustila hnízdo! Opakuji Káòata opustila hnízdo!","PLAIN DOWN",2]
+#loop1
+_CameraPos = getpos a101
+_cmx = _CameraPos select 0
+_cmy = _CameraPos select 1
+_cmz = _CameraPos select 2
+_cam camSetFov 0.5
+_cam CamSetPos [_cmx-25-(_i*0.2),_cmy-20,_cmz+1.5]
+_cam CamSetTarget a101
+_cam CamCommit 0
+@CamCommitted _cam
+~0.01
+_i = _i + 1
+?(_i<200): goto "loop1"
+_i = 0
+
+tr setfuel 1
+
+; vylez z baraku
+
+_cam CamSetPos [1610.69,5611.25,1.8]
+_cam CamSetTarget [1729.72,5634.81,5.000905991]
+_cam CamSetFov 0.7
+_cam CamCommit 0
+
+_cam CamSetPos [1618.64,5611.52,1.80134468]
+_cam CamCommit 4
+~4
+hum1 setfuel 1
+hum2 setfuel 1
+hum3 setfuel 1
+hum4 setfuel 1
+
+; odjezd hummeru
+
+_cam CamSetPos [1632.11,5590.38,1.00134468]
+_cam CamSetTarget hum1
+_cam CamCommit 0
+
+_cam CamSetPos [1633.89,5534.19,3.00134468]
+_cam CamCommit 7
+
+ah2 setfuel 1
+~7
+
+ah1 setfuel 1
+_cam CamSetPos [1620.97,5532.05,1.70133133]
+_cam CamSetTarget ah1
+_cam CamCommit 0
+
+~6
+
+_cam CamSetPos [1627.12,5552.84,2.00131798]
+_cam CamCommit 8
+m11 setfuel 1
+m12 setfuel 1
+m13 setfuel 1
+m14 setfuel 1
+m15 setfuel 1
+m16 setfuel 1
+m17 setfuel 1
+m18 setfuel 1
+~9
+
+_cam CamSetPos [6314.21,4133.17,3.000595093]
+_cam CamSetTarget m11
+_cam CamCommit 0
+
+~7
+
+_x = getpos silka select 0
+_y = getpos silka select 1
+bomber setpos [_x, _y, 2000]
+bomber fire ["put","pipebomb"]
+_cam CamSetPos [6393.26,4153.42,8.00258636]
+_cam CamSetTarget m12
+_cam CamCommit 4
+~6
+
+; zaber na odpaleni silky
+
+_cam CamSetPos [8256.15,4368.83,1.600558853]
+_cam CamSetTarget silka
+_cam camSetFov 0.7
+_cam CamCommit 0
+_cam camSetFov 0.4
+_cam CamCommit 5
+~2
+
+bomber setpos [_x, _y, 200]
+bomber action ["touchoff"]
+bomber setpos [0,0,0]
+bomber1 setpos [8219.66,4759.95,0]
+bomber1 setdir 184.402
+bomber1 setBehaviour "COMBAT"
+bomber1 switchMove "Crouch"
+bomber1 setUnitPos "UP"
+bomber1 stop true
+
+~2.5
+
+; zaber na special force zezadu
+
+_cam CamSetPos [8220.68,4765.84,1.00091362]
+_cam CamSetTarget silka
+_cam camSetFov 0.7
+_cam CamCommit 0
+
+_cam CamSetPos [8218.45,4766.12,1.0190086]
+_cam camSetFov 0.6
+_cam CamCommit 6
+~6
+
+_cam CamSetPos [7935.06,4062.54,1.00629377]
+_cam CamSetTarget [7997.88,3968.55,0.00355911]
+_cam camSetFov 0.7
+_cam CamCommit 0
+
+_cam CamSetPos [7924.12,4053.75,2.00595808]
+_cam CamCommit 5
+~5
+
+titleCut [" Pilot ","BLACK OUT", 3]
+~3.5
+
+CutRSC ["Default","Plain Down",100]
+_cam CameraEffect ["Terminate","Back"]
+CamDestroy _cam
+
+konec_videa=true
+exit

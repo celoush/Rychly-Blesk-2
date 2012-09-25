@@ -1,0 +1,257 @@
+ridic1 setpos [3932.89,5011.20,5.00]
+ridic2 setpos [3929.69,5004.09,5.00]
+
+ridic1 switchmove "FXInKneel"
+ridic2 switchmove "FXToHand"
+
+vel1 setidentity "velitel1"
+vel1 setBehaviour "SAFE"
+vel1 setSpeedMode "NORMAL"
+vel1 setCombatMode "BLUE"
+vel1 disableAI "AUTOTARGET"
+vel1 setMimic "ANGRY"
+
+vel2 setidentity "velitel2"
+vel2 setBehaviour "SAFE"
+vel2 setSpeedMode "NORMAL"
+vel2 setCombatMode "BLUE"
+vel2 disableAI "AUTOTARGET"
+vel2 setMimic "ANGRY"
+
+titleCut ["","BLACK IN", 3]
+playmusic["Track7",0]
+spec stop true
+
+;zaber zezadu za tankem
+_camera = "camera" CamCreate [3929.47,5011.08,0.30]
+_camera camSetTarget [-96068.95,4450.48,24.35]
+_camera CameraEffect ["Internal","Back"]
+_camera camSetFOV 0.700
+_camera camCommit 0
+
+vel1 switchmove "EffectStandTalk"
+
+~3
+
+vel2 switchmove "EffectStandTalk"
+
+;zaber skrz tank a nohy
+_camera camSetTarget [-96068.95,4450.48,24.30]
+_camera camSetPos [3943.16,5011.14,0.30]
+_camera camSetFOV 0.700
+_camera camCommit 5
+@camCommitted _camera
+
+titletext["Zdravím tì Lewisi, dostali jsme od generála povelení provést operaci Rychlý blesk.","PLAIN DOWN",3]
+
+~4
+
+velitel1 switchmove "FXToHand"
+velitel2 switchmove "FXStandAttVar1"
+
+; kamera prejede na velitele z ramene velitele2
+_camera camSetTarget [12473.36,104653.30,24.17]
+_camera camSetPos [3947.21,5018.26,1.74]
+_camera camSetFOV 0.700
+_camera camCommit 3
+@camCommitted _camera
+
+~3
+
+; kecy
+titletext [" Rozumím, nastali nìjaké zmìny v plánu?","PLAIN DOWN",3]
+
+; kamera z pozice velitele1 na velitele2
+_camera camSetTarget [29559.73,-91642.43,24.10]
+_camera camSetPos [3946.98,5021.88,1.74]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+~5
+
+_camera camSetTarget [12473.36,104653.30,24.17]
+_camera camSetPos [3947.21,5018.26,1.74]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+titletext ["Ne. Vèera jsem vyslal nìkolik tìžkých jednotek na sever a naøídil jim plnou pohotovost.","PLAIN DOWN",3]
+
+~5
+
+titletext ["Plán bude stejný, jak jsme ho vymysleli pøed týdnem. Takže:","PLAIN DOWN",1]
+
+; konec kecu
+
+; zabery na mista, kudy projde fronta 
+
+showPad false;
+showCompass false;
+showWatch false;
+~2
+
+ForceMap true
+disableUserinput true
+mapAnimAdd [0, 0.2, getMarkerPos "tanky"];
+mapAnimCommit
+titletext ["Jako první prorazí tanková èeta skrze pøedsunutou hlídku v údolí a bude pokraèovat údolím smìrem k Velké vsi.","PLAIN DOWN",1]
+~4
+mapAnimAdd [3, 0.3, getMarkerPos "vesnice"];
+mapAnimCommit
+~5
+titletext [" Pøedpokládáme, že naproti jim vyšlou težkou techniku ze vsi a tu zastaví speciální tým v údolí!","PLAIN DOWN",1]
+mapAnimAdd [3, 0.2, getMarkerPos "kameny"];
+mapAnimCommit
+~7.2
+titletext [" Poté, co opustí technika ves, vylodí se naše jednotky u vsi a dobyjí ji!","PLAIN DOWN",1]
+mapAnimAdd [3, 0.2, getMarkerPos "start3"];
+mapAnimCommit
+~5
+mapAnimAdd [3, 0.2, getMarkerPos "vesnice"];
+mapAnimCommit
+~5
+mapAnimAdd [5, 0.3, getMarkerPos "utok"];
+mapAnimCommit
+~5
+titletext[" Po dobytí vesnice vyrazí hlavní síly smìrem na Nevelkov.","PLAIN DOWN",1]
+~3
+mapAnimAdd [3, 0.3, getMarkerPos "neveklov"];
+mapAnimCommit
+~5
+titletext[" A pak budou pokraèovat smìrem k mostu!","PLAIN DOWN",1]
+mapAnimAdd [3, 0.3, getMarkerPos "most"];
+mapAnimCommit
+~5
+titletext["S hlavním útokem vyrazí i speciální tým, jejímž úkolem bude projet skrze minové pole\na znièit šilku u kostela nad mostem","PLAIN DOWN",1]
+mapAnimAdd [2, 0.3, getMarkerPos "utok"];
+mapAnimCommit
+~4
+mapAnimAdd [2, 0.2, getMarkerPos "miny"];
+mapAnimCommit
+~2
+mapAnimAdd [2, 0.2, getMarkerPos "silka"];
+mapAnimCommit
+~6
+titletext["Po znièení poslední šilky v okolí, nebrání nic v tom, aby vzlétla naše káòata a helikoptéry a my ovládli most!","PLAIN DOWN",1]
+~4
+mapAnimAdd [4, 0.3, getMarkerPos "apachi"];
+mapAnimCommit
+
+vel2 switchmove "EffectStandTalk"
+
+~4
+
+vel1 switchmove "EffectStandTalk"
+
+mapAnimAdd [4, 0.3, getMarkerPos "kanata"];
+mapAnimCommit
+~5
+ForceMap false
+
+disableUserinput false
+
+titletext["Poslední šilka?","PLAIN DOWN",2]
+
+_camera camSetTarget [29559.73,-91642.43,24.10]
+_camera camSetPos [3946.98,5021.88,1.74]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+~4
+
+_camera camSetTarget [12473.36,104653.30,24.17]
+_camera camSetPos [3947.21,5018.26,1.74]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+titletext["Ano, jedna je podle rozvìdky ve vsi, druhá nad tím kostelem a o tu tøetí se postará speciální komando dnes v noci.","PLAIN DOWN",2]
+~8
+titletext["","PLAIN DOWN",2]
+
+; zaber shora z panelaku na velitele
+_camera camSetTarget [44502.76,87913.14,-38415.58]
+_camera camSetPos [3933.95,4992.93,12.55]
+_camera camSetFOV 0.851
+_camera camCommit 0
+@camCommitted _camera
+
+titleCut ["","BLACK OUT",7]
+~7
+
+skiptime 7
+
+titleCut ["V noci, u mostu.","BLACK IN",2]
+
+
+spec stop false
+
+_camera camSetTarget [50376.54,-83417.40,-22401.06]
+_camera camSetPos [8160.89,4417.77,3.91]
+_camera camSetFOV 0.700
+_camera camCommit 0
+spec domove getpos silka
+@camCommitted _camera
+
+_camera camSetTarget [36605.48,-88792.19,-22401.21]
+_camera camSetPos [8162.13,4418.09,3.89]
+_camera camSetFOV 0.700
+_camera camCommit 3
+@camCommitted _camera
+
+~2
+spec fire ["put","pipebomb"]
+spec domove getpos hrac
+
+_camera camSetTarget [37344.21,-91213.12,-1733.66]
+_camera camSetPos [8162.13,4418.09,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 3
+@camCommitted _camera
+
+~2
+
+_camera camSetTarget [-68084.75,-58277.85,-15941.70]
+_camera camSetPos [8166.49,4418.20,6.77]
+_camera camSetFOV 0.700
+_camera camCommit 3
+@camCommitted _camera
+
+titleCut ["","BLACK OUT", 3]
+
+m1 setfuel 1
+m2 setfuel 1
+m3 setfuel 1
+m4 setfuel 1
+
+titleCut ["","BLACK IN", 3]
+
+_camera camSetTarget [92427.56,58793.57,146.18]
+_camera camSetPos [5511.12,9341.26,0.21]
+_camera camSetFOV 0.700
+_camera camCommit 0
+~3
+
+_camera camSetTarget [98881.07,-25838.07,-6523.70]
+_camera camSetPos [5511.12,9341.26,0.17]
+_camera camSetFOV 0.276
+_camera camCommit 4
+@camCommitted _camera
+
+15 fademusic 0
+titleRsc ["titlesceloush", "PLAIN"]
+~5
+titleRsc ["titlesuvadi", "PLAIN"]
+~5
+titleCut ["","BLACK OUT", 5]
+titleRsc ["titlesorb", "PLAIN"]
+~7.5
+
+konec=true
+
+;CutRSC ["Default","Plain Down",100]
+;_camera CameraEffect ["Terminate","Back"]
+;CamDestroy _camera
+
+exit

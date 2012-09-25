@@ -1,0 +1,253 @@
+;INIT SOUBOR - INTRO
+hrac setidentity "tankista"
+hrac exec "tankista_pilot.sqs"
+setviewdistance 800
+enableRadio false
+
+konec_videa=false
+hrac addaction ["SaveGame","save.sqs"]
+
+0 fademusic 1
+playmusic ["7thOverdose",47]
+5 fademusic 1
+
+titleCut ["Tank","BLACK IN", 3]
+playmusic ["Track5",27]
+enableRadio true
+
+hrac moveincommander tank1
+strelec moveingunner tank1
+ridic moveindriver tank1
+[ridic,strelec] join group hrac
+vojcl sidechat "Všem jednotkám, operace Rychlı blesk právì zaèala, hodnì štìstí!"
+~5
+savegame
+hrac groupchat "Tak pánové, je to tu! Drte se pohromadì a nedìlejte ádnı blbosti."
+~10
+10 fademusic 0
+
+@utok2
+@not canfire ov1
+@not canfire ov2
+@not canfire ov3
+hrac sidechat "Hlásím úspìch! Prorazili jsme! Pøedsunutá hlídka znièena!" 
+"1" ObjStatus "DONE"
+0 fademusic 1
+playmusic ["Track6",25]
+titleCut ["Úkol splnìn","BLACK OUT", 3]
+~3
+15 fademusic 0
+
+; nyni dojde k utoku pomoci zenistu na posily
+
+hrac setidentity "zenista"
+hrac setdammage 0
+
+enableRadio false
+hrac action ["eject", tank1]
+nhrac moveincommander tank1
+[hrac] join grpNull
+[nhrac,strelec,ridic] join group tank2
+[zen1,zen2,zen3,zen4,zen5] join group hrac
+
+hrac setpos getpos zenista_pozice
+hrac exec "special.sqs"
+hrac setdir 215
+~2
+enableRadio true
+
+titleCut [" enista ","BLACK IN", 5]
+~1
+hrac groupchat "Tak pánove máme na to chvilku, take rozmístíme miny a schováme se!"
+~4
+zen1 groupchat "Rozumím, pane!"
+
+savegame
+
+~8
+vojcl sidechat "Desátníku Browne, tanky ji jedou k vašim pozicím, máte málo èasu, pospìšte si!"
+~5
+hrac sidechat "Rozumím, nebojte se, neprojedou!"
+@konecukolu2
+"2" ObjStatus "DONE"
+? projel : "2" ObjStatus "FAILED"
+
+0 fademusic 1
+playmusic ["Track6",25]
+titleCut ["Konec úkolu","BLACK OUT", 3]
+~3
+15 fademusic 0
+
+; nyni dojde k utoku z vylodovacich m113
+
+m1131 setfuel 1
+m1131 setpos getpos pozvm1
+m1132 setfuel 1
+m1132 setpos getpos pozvm2
+m1133 setfuel 1
+m1133 setpos getpos pozvm3
+m1134 setfuel 1
+m1134 setpos getpos pozvm4
+
+enableRadio false
+hrac moveincargo m1133
+hrac setidentity "pesak"
+hrac setdammage 0
+hrac exec "pesak.sqs"
+[hrac] join grpNull
+[hrac] join group vylz3
+tank1 setdammage 0
+tank1 setpos getpos pozt1
+tank1 setdir 230
+tank2 setdammage 0
+tank2 setpos getpos pozt2
+tank2 setdir 230
+tank3 setdammage 0
+tank3 setpos getpos pozt3
+tank3 setdir 230
+tank4 setdammage 0
+tank4 setpos getpos pozt4
+tank4 setdir 230
+
+enableRadio true
+
+titleCut [" Pìchota ","BLACK IN", 5]
+~5
+savegame
+~3
+vojcl sidechat "Útok na ves mùe zaèít! Jdìte do toho pánové a drte se!"
+~4
+m1131 sidechat "Jsme na cestì, za chvíli jsme na plái."
+~4
+vojcl sidechat "Dávejte pozor, tanky vám pomohou, a k vám dorazí! Hodnì štìstí!"
+~7
+vylz3 groupchat "Dávejte pozor! Na stráni mají bıt kulometná hnízda. Najdìte je a rychle je vyøiïte! Hlavnì vy, kdo máte raketomet."
+kulv1 dotarget m1131
+kulv1 dofire m1131 
+
+@vesklidna
+
+"3" ObjStatus "DONE"
+
+vojcl sidechat "Ves je naše! Gratuluji!"
+0 fademusic 1
+playmusic ["Track6",25]
+titleCut ["Úkol splnìn","BLACK OUT", 3]
+15 fademusic 0
+~3
+enableRadio false
+utok1=true
+
+; utok pres lesni prusmyk a na silku v jeepu
+
+[hrac] join grpNull
+[rak1,rak,strelecj,ridicj2,strelecj2] join group hrac
+hrac setidentity "jeeper"
+hrac setdammage 0
+hrac exec "jeeper.sqs"
+hrac moveindriver jeep
+ridicj2 moveindriver jeep1
+strelecj2 moveingunner jeep1
+hrac domove getpos (object 1328)
+
+titleCut [" Jeep ","BLACK IN", 5]
+~5
+enableRadio true
+
+vojcl sidechat "Útok na Neveklov mùe zaèít!"
+
+savegame
+~4
+
+vojcl sidechat "Robinsone, ujídìjte ke kostelu a rychle vyøiïte tu šilku."
+~6
+hrac sidechat "Jsem na cestì!"
+
+@not alive shilka
+
+"4" ObjStatus "DONE"
+
+hrac sidechat "Šilka znièena!"
+~4
+vojcl sidechat "Vıbornì! Káòata mohou vzlétnout!"
+
+titleCut ["Úkol splnìn","BLACK OUT", 3]
+~5
+
+titletext[" Leteckı útok mùe zaèít!","PLAIN DOWN",2]
+~4
+presunsilka2=true
+enableRadio false
+[] exec "video.sqs"
+@konec_videa
+
+hrac setidentity "pilot"
+hrac setdammage 0
+hrac exec "tankista_pilot.sqs"
+hrac action ["EJECT",jeep] 
+[hrac] join grpNull
+[streleca,pilota2,streleca2] join group hrac
+pilota2 moveindriver apache2
+streleca2 moveingunner apache2
+streleca moveingunner apache
+
+hrac moveindriver apache
+
+titleCut ["","BLACK IN", 3]
+~3
+
+savegame
+
+enableRadio true
+
+vojcl sidechat "Majore Robinsone! Vaši apachi mají volnı prostor. Pøeji hodnì úspìchù."
+~5
+hrac sidechat "Rozumím, pane! Vyráíme!"
+~15
+bomber1 sidechat "Sakra! Na kopci nad vesnicí mají dvì šilky a smìøují k mostu! A si dá letectvo pozor!"
+~8
+vojcl sidechat "Slyšeli jste?"
+~4
+hrac sidechat "Rozumím, pane!"
+~7
+a10 sidechat "Rychle ji musíme sundat nebo sejme nás!"
+@not canfire t801
+@not canfire t802
+@not canfire t803
+@not canfire t804
+@not canfire v1
+
+"5" ObjStatus "DONE"
+
+vojcl sidechat "Gratuluji! Úkol vyšel a most je náš!"
+
+hrac action ["HOVER",apache]
+
+titleCut [" Konec mise ","WHITE IN",2]
+_cam = "camera" CamCreate [7845.87,4391.56,0.14]
+_cam camSetTarget [107824.04,3663.32,18.58]
+_cam CameraEffect ["Internal","Back"]
+_cam camSetFOV 0.700
+_cam camCommit 0
+@camCommitted _cam
+
+playmusic["7thMyLife",46]
+enableradio false
+
+_cam camSetTarget [107479.55,4022.93,-8516.29]
+_cam camSetPos [7845.87,4391.56,11.84]
+_cam camSetFOV 0.388
+_cam camCommit 10
+
+~8
+titleCut ["","BLACK OUT",5]
+7 fademusic 0
+~9
+
+CutRSC ["Default","Plain Down",100]
+_cam CameraEffect ["Terminate","Back"]
+CamDestroy _cam
+
+konec=true
+
+exit

@@ -1,0 +1,131 @@
+0 fademusic 0
+;playmusic ["7thLifeless",17]
+playmusic ["7thDarken",62]
+6 fademusic 1
+
+pesak exec "pesak.sqs"
+pesak setidentity "pesak"
+pesak setCombatMode "BLUE"
+pesak disableAI "AUTOTARGET"
+pesak setMimic "SMILE"
+
+m1a1 setpos [7980.58,4391.53,18.10]
+
+tankista setidentity "tankista"
+tankista setpos [7981.66,4392.38,20.40]
+tankista setdir 90
+tankista exec "tankista_pilot.sqs"
+tankista disableAI "AUTOTARGET"
+tankista switchmove "FXInKneel"
+
+special setidentity "zenista"
+special exec "special.sqs"
+special disableAI "AUTOTARGET"
+special switchmove "FXToHand"
+
+jeeper setidentity "jeeper"
+jeeper exec "jeeper.sqs"
+jeeper disableAI "AUTOTARGET"
+
+pilot setidentity "pilot"
+pilot exec "tankista_pilot.sqs"
+pilot disableAI "AUTOTARGET"
+pilot switchmove "FXShow4"
+
+titlecut[" Hráli ","BLACK IN",2]
+
+_camera = "camera" CamCreate [7975.54,4391.12,16.44]
+_camera CameraEffect ["Internal","Back"]
+_camera camSetTarget [-91823.38,10722.47,7.05]
+;_camera camSetPos [7975.54,4391.12,18.14]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+~0.5
+titletext["Major Bill Gaudner","PLAIN DOWN",1]
+
+_camera camSetTarget [-82798.27,37278.52,26024.45]
+_camera camSetPos [7986.80,4390.60,16.44]
+_camera camSetFOV 0.485
+_camera camCommit 4
+@camCommitted _camera
+
+~2
+
+_camera camSetTarget [-86857.94,-19823.19,13104.83]
+_camera camSetPos [9002.12,5520.33,1.48]
+_camera camSetFOV 0.048
+_camera camCommit 0
+
+titletext["Desátník Jack Brown","PLAIN DOWN",1]
+
+_camera camSetTarget [-86857.94,-19823.19,13104.80]
+_camera camSetPos [9002.12,5520.33,1.48]
+_camera camSetFOV 0.444
+_camera camCommit 4
+@camCommitted _camera
+
+~2.35
+
+_camera camSetTarget [42384.57,81435.20,-53817.09]
+_camera camSetPos [8177.98,4424.58,6.55]
+_camera camSetFOV 0.753
+_camera camCommit 0
+@camCommitted _camera
+
+titletext["Desátník Brat Hudson","PLAIN DOWN",1]
+
+_camera camSetTarget [10284.20,103642.41,-12301.64]
+_camera camSetPos [8181.12,4426.69,1.36]
+_camera camSetFOV 0.857
+_camera camCommit 4
+@camCommitted _camera
+
+~2.5
+jeeper switchmove "FXCivilFoldOnesArms"
+
+_camera camSetTarget [-92210.77,-4399.33,119.00]
+_camera camSetPos [7368.26,4757.99,1.17]
+_camera camSetFOV 0.700
+_camera camCommit 0
+@camCommitted _camera
+
+titletext["Desátník Tim Robinson","PLAIN DOWN",1]
+
+_camera camSetTarget [-92210.77,-4399.33,118.99]
+_camera camSetPos [7368.52,4759.22,1.18]
+_camera camSetFOV 0.700
+_camera camCommit 4
+@camCommitted _camera
+
+~2.1
+
+_camera camSetTarget [-42236.63,-83063.44,10.76]
+_camera camSetPos [5156.47,4992.13,2.55]
+_camera camSetFOV 0.764
+_camera camCommit 0
+@camCommitted _camera
+
+titletext["Major Jack T. Robinson","PLAIN DOWN",1]
+
+_camera camSetTarget [-42236.63,-83063.44,11.12]
+_camera camSetPos [5156.47,4992.13,1.56]
+_camera camSetFOV 0.764
+_camera camCommit 4
+@camCommitted _camera
+
+pilot setmimic "SMILE" 
+
+~3
+
+4 fademusic 3
+
+titletext["","PLAIN DOWN",1]
+titlecut["Vyrobil\nCeloush\n2003","BLACK OUT",4]
+~4
+15 fademusic 0
+~17
+
+konec=true
+exit
